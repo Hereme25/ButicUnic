@@ -4,37 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/download"
     tools:context=".LoginActivity">
 
-    <TextView
-        android:id="@+id/Inregistrare"
-        android:layout_width="261dp"
-        android:layout_height="34dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:backgroundTint="@color/white"
-        android:text="Inregistrare"
-        app:layout_constraintBottom_toTopOf="@+id/Conectare"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewUnic"
-        app:layout_constraintVertical_bias="0.868" />
     <Button
         android:id="@+id/Conectare"
-        android:layout_width="261dp"
-        android:layout_height="34dp"
-        android:backgroundTint="@color/white"
+        android:layout_width="250dp"
+        android:layout_height="45dp"
+        android:backgroundTint="@color/bej"
         android:text="Conectare"
+        android:background="@drawable/mybuttons"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.934" />
+        app:layout_constraintVertical_bias="0.878" />
 
     <TextView
         android:id="@+id/textViewButic"
@@ -42,7 +30,7 @@
         android:layout_height="120dp"
         android:layout_marginTop="236dp"
         android:text="Butic"
-        android:textColor="@color/white"
+        android:textColor="@color/chaudron"
         android:textSize="70dp"
         app:layout_constraintBottom_toTopOf="@+id/textViewUnic"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,47 +51,63 @@
         app:layout_constraintHorizontal_bias="0.926"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/emailEditText"
-        android:layout_width="338dp"
-        android:layout_height="41dp"
-        android:drawableLeft="@drawable/ic_baseline_email_24"
-        android:drawablePadding="5dp"
-        android:drawableTint="@color/white"
-        android:hint="Please enter your email"
-        android:padding="10dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewButic"
+
+    <TextView
+        android:id="@+id/linkregister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="84dp"
+        android:text="Apasa aici!"
+        android:textColor="@color/chaudron"
+        android:textSize="15dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintTop_toBottomOf="@+id/Conectare" />
+
+    <TextView
+        android:id="@+id/faracont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nu ai cont?"
+        android:textColor="@color/chaudron"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/linkregister"
+        app:layout_constraintHorizontal_bias="0.988"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="648dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/textViewButic"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton"
+        app:layout_constraintHorizontal_bias="0.055"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.271">
+        app:layout_constraintVertical_bias="0.158"
+        app:srcCompat="@drawable/ic_baseline_message_24"
+        app:tint="@color/chaudron" />
 
-    </EditText>
+    <TextView
+        android:id="@+id/instagramlink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=":butic_unic"
+        android:textColor="@color/chaudron"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        tools:layout_editor_absoluteY="28dp" />
 
-    <EditText
-        android:id="@+id/passwordEditText"
-        android:layout_width="338dp"
-        android:layout_height="41dp"
-        android:layout_below="@id/emailEditText"
-        android:drawableLeft="@drawable/ic_baseline_key_24"
-        android:drawablePadding="5dp"
-        android:drawableTint="@color/white"
-        android:hint="Please enter your password"
-        android:padding="10dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewButic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailEditText"
-        app:layout_constraintVertical_bias="0.289">
-
-    </EditText>
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/hanger"
+        tools:layout_editor_absoluteX="313dp"
+        tools:layout_editor_absoluteY="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
