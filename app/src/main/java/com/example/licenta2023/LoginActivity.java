@@ -12,8 +12,7 @@ import android.widget.TextView;
 public class LoginActivity extends AppCompatActivity {
 
     Button Conectare;
-    EditText email, password;
-    TextView Butic, Unic;
+    TextView  Register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,15 +20,14 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         Conectare =findViewById(R.id.Conectare);
-        email.setVisibility(email.INVISIBLE);
-        password.setVisibility(password.INVISIBLE);
-        Butic =findViewById(R.id.textViewButic);
-        Unic =findViewById(R.id.textViewUnic);
+        Register= findViewById(R.id.linkregister);
 
-        Conectare.setOnClickListener(new View.OnClickListener() {
+
+
+        Register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
+                Intent i= new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(i);
             }
         });

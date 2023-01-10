@@ -4,6 +4,175 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".RegisterActivity"
+    android:background="@drawable/download">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="45dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/ic_baseline_message_24"
+                app:tint="@color/chaudron" />
+
+            <TextView
+                android:id="@+id/instagramlink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/imageView"
+                android:layout_marginTop="16dp"
+                android:text=":butic_unic"
+                android:textColor="@color/chaudron"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="170dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/instagramlink"
+                app:srcCompat="@mipmap/hanger" />
+
+            <TextView
+                android:id="@+id/inregistreaza"
+                android:layout_width="200dp"
+                android:layout_height="42dp"
+                android:layout_below="@id/imageButton"
+                android:layout_marginTop="30dp"
+                android:text="Creaza un cont"
+                android:textStyle="bold"
+                android:textSize="23dp"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/mybuttons"
+                />
+
+            <EditText
+                android:id="@+id/numeinregistrare"
+                android:layout_width="380dp"
+                android:layout_height="42dp"
+                android:layout_below="@id/inregistreaza"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/mytextviews"
+                android:hint=" Nume"
+                android:textColorHint="@color/chaudron"
+                android:drawableLeft="@drawable/ic_baseline_person_24"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/prenumeinregistrare"
+                android:layout_width="380dp"
+                android:layout_height="42dp"
+                android:layout_below="@id/numeinregistrare"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/mytextviews"
+                android:hint=" Prenume"
+                android:textColorHint="@color/chaudron"
+                android:drawableLeft="@drawable/ic_baseline_person_24"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/emailinregistrare"
+                android:layout_width="380dp"
+                android:layout_height="42dp"
+                android:layout_below="@id/prenumeinregistrare"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/mytextviews"
+                android:hint=" Email"
+                android:textColorHint="@color/chaudron"
+                android:drawableLeft="@drawable/ic_baseline_email_24"
+                android:inputType="textEmailAddress"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/parolainregistrare"
+                android:layout_width="380dp"
+                android:layout_height="42dp"
+                android:layout_below="@id/emailinregistrare"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/mytextviews"
+                android:hint=" Parola"
+                android:textColorHint="@color/chaudron"
+                android:drawableLeft="@drawable/ic_baseline_key_24"
+                android:inputType="textPassword"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/telefoninregistrare"
+                android:layout_width="380dp"
+                android:layout_height="42dp"
+                android:layout_below="@id/parolainregistrare"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/mytextviews"
+                android:hint=" Telefon"
+                android:textColorHint="@color/chaudron"
+                android:drawableLeft="@drawable/ic_baseline_phone_24"
+                android:inputType="phone"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/orasinregistrare"
+                android:layout_width="380dp"
+                android:layout_height="42dp"
+                android:layout_below="@id/telefoninregistrare"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/mytextviews"
+                android:hint=" Oras"
+                android:textColorHint="@color/chaudron"
+                android:drawableLeft="@drawable/ic_baseline_location_city_24"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/judetinregistrare"
+                android:layout_width="380dp"
+                android:layout_height="42dp"
+                android:layout_below="@id/orasinregistrare"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/mytextviews"
+                android:hint=" Judet"
+                android:textColorHint="@color/chaudron"
+                android:drawableLeft="@drawable/ic_baseline_location_city_24"
+                android:textSize="20sp"/>
+
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="42dp"
+                android:layout_below="@+id/judetinregistrare"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/mybuttons"
+                android:layout_marginTop="30dp"
+                android:text="Inregistrare"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="20dp"/>
+
+
+
+
+
+
+
+        </RelativeLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
