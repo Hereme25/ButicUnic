@@ -51,7 +51,7 @@
                 android:layout_height="42dp"
                 android:layout_below="@id/imageButton"
                 android:layout_marginTop="30dp"
-                android:text="Creaza un cont"
+                android:text="Creeaza un cont"
                 android:textStyle="bold"
                 android:textSize="23dp"
                 android:textColor="@color/white"

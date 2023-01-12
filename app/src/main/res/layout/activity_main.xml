@@ -1,59 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/download">
 
-    <EditText
-        android:id="@+id/emailEditText"
-        android:layout_width="338dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="212dp"
-        android:background="@color/bej"
-        android:drawableLeft="@drawable/ic_baseline_email_24"
-        android:drawablePadding="5dp"
-        android:drawableTint="@color/chaudron"
-        android:hint="Please enter your email"
-        android:padding="10dp"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="42dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_baseline_message_24"
+        app:tint="@color/chaudron" />
+
+    <TextView
+        android:id="@+id/instagramlink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/imageView"
+        android:layout_marginTop="16dp"
+        android:text=":butic_unic"
+        android:textColor="@color/chaudron"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/instagramlink"
+        app:srcCompat="@mipmap/hanger" />
+
+    <TextView
+        android:id="@+id/textViewButic"
+        android:layout_width="217dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="150dp"
+        android:text="Butic"
+        android:textColor="@color/chaudron"
+        android:textSize="70dp"
+        android:layout_below="@id/instagramlink"/>
+
+    <TextView
+        android:id="@+id/textViewUnic"
+        android:layout_width="217dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="160dp"
+        android:text="Unic"
         android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="19dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textViewButic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.271">
+        android:textSize="70dp"
+        android:layout_below="@+id/textViewButic"
+        android:layout_marginLeft="180dp"/>
 
-    </EditText>
-
-    <EditText
-        android:id="@+id/passwordEditText"
-        android:layout_width="338dp"
-        android:layout_height="41dp"
-        android:layout_below="@id/emailEditText"
-        android:layout_marginTop="212dp"
-        android:background="@color/bej"
-        android:drawableLeft="@drawable/ic_baseline_key_24"
-        android:drawablePadding="5dp"
-        android:drawableTint="@color/chaudron"
-        android:hint="Please enter your password"
-        android:padding="10dp"
+    <Button
+        android:id="@+id/Conectare"
+        android:layout_width="200dp"
+        android:layout_height="42dp"
+        android:layout_below="@id/textViewUnic"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/mybuttons"
+        android:text="Conectare"
         android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="19dp"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/linkregister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="80dp"
+        android:text="Apasa aici!"
+        android:textColor="@color/chaudron"
+        android:textSize="15dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textViewButic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailEditText"
-        app:layout_constraintVertical_bias="0.289">
+        android:layout_below="@id/Conectare"
+        android:layout_toRightOf="@id/faracont"/>
 
-    </EditText>
+    <TextView
+        android:id="@+id/faracont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nu ai cont?"
+        android:textColor="@color/chaudron"
+        android:textSize="15dp"
+        android:layout_marginLeft="170dp"
+        android:layout_below="@id/Conectare" />
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
