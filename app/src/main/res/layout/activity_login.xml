@@ -24,7 +24,7 @@
         />
 
     <EditText
-        android:id="@+id/emailinregistrare"
+        android:id="@+id/emailconectare"
         android:layout_width="380dp"
         android:layout_height="42dp"
         android:layout_below="@id/inregistreaza"
@@ -38,10 +38,10 @@
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/parolainregistrare"
+        android:id="@+id/parolaconectare"
         android:layout_width="380dp"
         android:layout_height="42dp"
-        android:layout_below="@id/emailinregistrare"
+        android:layout_below="@id/emailconectare"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="15dp"
         android:background="@drawable/mytextviews"
@@ -53,10 +53,9 @@
 
     <Button
         android:id="@+id/Login"
-
         android:layout_width="200dp"
         android:layout_height="42dp"
-        android:layout_below="@+id/parolainregistrare"
+        android:layout_below="@+id/parolaconectare"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="250dp"
         android:background="@drawable/mybuttons"
