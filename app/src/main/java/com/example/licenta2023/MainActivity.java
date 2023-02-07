@@ -24,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
             Conectare.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent j= new Intent(MainActivity.this, LoginActivity.class);
+                    Intent i= new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(i);
                 }
             });
             Register.setOnClickListener(new View.OnClickListener() {

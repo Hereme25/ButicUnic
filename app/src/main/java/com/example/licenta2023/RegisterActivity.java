@@ -82,7 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus){
-                    showMessage("Notificare", "Parola trebuie sa contina cel putin 8 caractere!");
+                    showMessage("Notificare", "Parola trebuie sa contina minim 8 caractere!");
                 }
             }
         });
@@ -97,57 +97,57 @@ public class RegisterActivity extends AppCompatActivity {
     }
     public boolean validateRegister(String nume, String prenume, String email, String parola, String telefon, String oras, String judet) {
         if (nume.isEmpty()) {
-            numeinregistrare.setError("Orice");
+            numeinregistrare.setError("Câmpul nume nu poate fi gol!");
             numeinregistrare.requestFocus();
             return false;
         } else {
             if (prenume.isEmpty()) {
-                prenumeinregistrare.setError("Orice");
+                prenumeinregistrare.setError("Câmpul prenume nu poate fi gol!");
                 prenumeinregistrare.requestFocus();
                 return false;
             } else {
                 if (email.isEmpty()) {
-                    emailinregistrare.setError("Orice");
+                    emailinregistrare.setError("Câmpul email nu poate fi gol!");
                     emailinregistrare.requestFocus();
                     return false;
                 } else {
                     if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                        emailinregistrare.setError("Orice");
+                        emailinregistrare.setError("Formatul adresa de email este incorect!");
                         emailinregistrare.requestFocus();
                         return false;
                     } else {
                         if (parola.isEmpty()) {
-                            parolainregistrare.setError("Orice");
+                            parolainregistrare.setError("Câmpul parolă nu poate fi gol!");
                             parolainregistrare.requestFocus();
                             return false;
                         } else {
                             if (parola.length() < 8) {
-                                parolainregistrare.setError("Orice");
+                                parolainregistrare.setError("Parola trebuie să conțină minim 8 caractere!");
                                 parolainregistrare.requestFocus();
                                 return false;
                             } else {
                                 if (telefon.isEmpty()) {
-                                    telefoninregistrare.setError("Orice");
+                                    telefoninregistrare.setError("Câmpul telefon nu poate fi gol!");
                                     telefoninregistrare.requestFocus();
                                     return false;
                                 } else {
                                     if (telefon.length() < 10) {
-                                        telefoninregistrare.setError("Orice");
+                                        telefoninregistrare.setError("Numărul de telefon trebuie să conțină minim 10 caractere!");
                                         telefoninregistrare.requestFocus();
                                         return false;
                                     } else {
                                         if (!Patterns.PHONE.matcher(telefon).matches()) {
-                                            telefoninregistrare.setError("Orice");
+                                            telefoninregistrare.setError("Formatul numărului de telfon este incorect!");
                                             telefoninregistrare.requestFocus();
                                             return false;
                                         } else {
                                             if (oras.isEmpty()) {
-                                                orasinregistrare.setError("Orice");
+                                                orasinregistrare.setError("Câmpul oraș nu poate fi gol!");
                                                 orasinregistrare.requestFocus();
                                                 return false;
                                             } else {
                                                 if (judet.isEmpty()) {
-                                                    judetinregistrare.setError("Orice");
+                                                    judetinregistrare.setError("Câmpul județ nu poate fi gol!");
                                                     judetinregistrare.requestFocus();
                                                     return false;
                                                 }
