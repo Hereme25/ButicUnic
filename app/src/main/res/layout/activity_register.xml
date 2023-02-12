@@ -43,7 +43,7 @@
                 android:layout_marginLeft="170dp"
                 android:layout_marginTop="10dp"
                 android:layout_toRightOf="@id/instagramlink"
-                app:srcCompat="@mipmap/hanger" />
+                app:srcCompat="@mipmap/icon" />
 
             <TextView
                 android:id="@+id/inregistreaza"

@@ -3,12 +3,22 @@ package com.example.licenta2023;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.licenta2023.Entities.User;
@@ -17,14 +27,20 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class RegisterActivity extends AppCompatActivity {
 
     EditText numeinregistrare, prenumeinregistrare, emailinregistrare, parolainregistrare, telefoninregistrare, orasinregistrare, judetinregistrare;
     Button registerbutton;
+    TextView Butic_Unic;
 
     FirebaseAuth mAuth;
     FirebaseDatabase firebaseDatabase;
+    ArrayList<String> orase = new ArrayList<>(Arrays.asList("Pitesti", "Bucuresti", "Iasi"));
+    ArrayList<String> judete = new ArrayList<>(Arrays.asList("Arges","Tulcea","Olt"));
+    Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +55,91 @@ public class RegisterActivity extends AppCompatActivity {
         orasinregistrare = findViewById(R.id.orasinregistrare);
         judetinregistrare = findViewById(R.id.judetinregistrare);
         registerbutton = findViewById(R.id.registerbutton);
+        Butic_Unic = findViewById(R.id.instagramlink);
 
         mAuth=FirebaseAuth.getInstance();
         firebaseDatabase=FirebaseDatabase.getInstance();
+
+        Butic_Unic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openInstagram();
+            }
+        });
+
+        orasinregistrare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog = new Dialog(RegisterActivity.this);
+                dialog.setContentView(R.layout.dialog_search_spiner_city);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+                EditText editText = dialog.findViewById(R.id.city_edit_text);
+                ListView listView = dialog.findViewById(R.id.searchCityListView);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(RegisterActivity.this, android.R.layout.simple_list_item_1,orase);
+                listView.setAdapter(adapter);
+                editText.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        adapter.getFilter().filter(s);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        orasinregistrare.setText(adapter.getItem(position));
+                        dialog.dismiss();
+                    }
+                });
+            }
+        });
+
+        judetinregistrare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog = new Dialog(RegisterActivity.this);
+                dialog.setContentView(R.layout.dialog_search_spiner_county);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+                EditText editText = dialog.findViewById(R.id.county_edit_text);
+                ListView listView = dialog.findViewById(R.id.searchCountyListView);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(RegisterActivity.this, android.R.layout.simple_list_item_1,judete);
+                listView.setAdapter(adapter);
+                editText.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        adapter.getFilter().filter(s);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        judetinregistrare.setText(adapter.getItem(position));
+                        dialog.dismiss();
+                    }
+                });
+            }
+        });
 
         registerbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +184,11 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void openInstagram() {
+        Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://vaccinare-covid.gov.ro/precizari-privind-inscrierea-pe-platforma-de-vaccinare/"));
+        startActivity(webIntent);
     }
 
     public void showMessage(String title, String message){

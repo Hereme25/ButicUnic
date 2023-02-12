@@ -9,6 +9,10 @@ public class User {
     private String oras;
     private String judet;
 
+    public User(){
+
+    }
+
     public User(String nume, String prenume, String email, String parola, String telefon, String oras, String judet) {
         this.nume = nume;
         this.prenume = prenume;

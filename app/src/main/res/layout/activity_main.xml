@@ -34,12 +34,13 @@
         android:layout_marginLeft="170dp"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@id/instagramlink"
-        app:srcCompat="@mipmap/hanger" />
+        app:srcCompat="@mipmap/icon" />
 
     <TextView
         android:id="@+id/textViewButic"
         android:layout_width="217dp"
         android:layout_height="120dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="150dp"
         android:text="Butic"
         android:textColor="@color/chaudron"
@@ -72,13 +73,13 @@
 
     <TextView
         android:id="@+id/linkregister"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="80dp"
         android:text="Apasă aici!"
         android:textColor="@color/chaudron"
-        android:textSize="15dp"
+        android:textSize="14dp"
         android:textStyle="bold"
+        android:layout_marginTop="10dp"
         android:layout_below="@id/Conectare"
         android:layout_toRightOf="@id/faracont"/>
 
@@ -89,7 +90,8 @@
         android:text="Nu ai cont?"
         android:textColor="@color/chaudron"
         android:textSize="15dp"
-        android:layout_marginLeft="170dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@id/Conectare" />
 
     </RelativeLayout>

@@ -4,11 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText emailconectare,parolaconectare;
     Button login;
+    TextView Butic_Unic;
 
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener mAuthListener;
@@ -48,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         emailconectare=findViewById(R.id.emailconectare);
         parolaconectare=findViewById(R.id.parolaconectare);
         login=findViewById(R.id.Login);
+        Butic_Unic=findViewById(R.id.instagramlink);
 
         mAuth=FirebaseAuth.getInstance();
         mAuth.signOut();
@@ -68,6 +72,13 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         };
+
+        Butic_Unic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openInstagram();
+            }
+        });
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,7 +122,10 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(this, PrincipalPage.class));
         }
     }
-
+    public void openInstagram() {
+        Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://vaccinare-covid.gov.ro/precizari-privind-inscrierea-pe-platforma-de-vaccinare/"));
+        startActivity(webIntent);
+    }
 
     public boolean validateLogin(String email, String parola){
         if(email.isEmpty()){

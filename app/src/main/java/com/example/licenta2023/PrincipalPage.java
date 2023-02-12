@@ -104,7 +104,19 @@ public class PrincipalPage extends AppCompatActivity {
         super.onPause();
         closeDrawer(drawerLayout);
     }
+    public void ClickMenu(View view)
+    {
+        openDrawer(drawerLayout);
+    }
+
+    public void openDrawer(DrawerLayout drawerLayout)
+    {
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
 
     public void ClickSignOut(View view){    logout(PrincipalPage.this);}
     public void ClickHome(View view){    closeDrawer(drawerLayout);}
+    public void ClickDespreNoi(View view){
+        redirectActivity(PrincipalPage.this,DespreNoi.class);
+    }
 }

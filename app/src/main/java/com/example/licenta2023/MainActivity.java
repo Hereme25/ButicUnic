@@ -3,6 +3,7 @@ package com.example.licenta2023;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,7 +12,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     Button Conectare;
-    TextView  Register;
+    TextView  Register, Butic_Unic;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
             Conectare = findViewById(R.id.Conectare);
             Register = findViewById(R.id.linkregister);
+            Butic_Unic = findViewById(R.id.instagramlink);
+
 
             Conectare.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -35,5 +38,17 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(i);
                 }
             });
+
+            Butic_Unic.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    openInstagram();
+                }
+            });
+
         }
+    public void openInstagram() {
+        Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://vaccinare-covid.gov.ro/precizari-privind-inscrierea-pe-platforma-de-vaccinare/"));
+        startActivity(webIntent);
     }
+}
