@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
     public void openInstagram() {
-        Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://vaccinare-covid.gov.ro/precizari-privind-inscrierea-pe-platforma-de-vaccinare/"));
+        Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/butic_unic/?igshid=ZDdkNTZiNTM%3D"));
         startActivity(webIntent);
     }
 }

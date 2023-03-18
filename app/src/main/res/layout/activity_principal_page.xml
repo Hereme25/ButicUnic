@@ -13,7 +13,7 @@
         android:layout_width="217dp"
         android:layout_height="120dp"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:text="Butic"
         android:textColor="@color/chaudron"
         android:textSize="70dp" />
@@ -23,7 +23,7 @@
         android:layout_width="217dp"
         android:layout_height="120dp"
         android:layout_marginBottom="160dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="120dp"
         android:text=" Unic"
         android:textColor="@color/white"
         android:textSize="70dp"
@@ -34,19 +34,75 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cum funcționează?"
+        android:textStyle="bold"
         android:textColor="@color/chaudron"
         android:textSize="30dp"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="300dp"/>
+        android:layout_marginTop="260dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1."
+        android:text="1. Postează produsul"
         android:textColor="@color/chaudron"
-        android:layout_marginLeft="40dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="350dp"
         android:textSize="30dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="(nu folosi poze preluate de pe internet)"
+        android:textColor="@color/chaudron"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="400dp"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="                     2. S-a vândut?"
+        android:textColor="@color/chaudron"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="470dp"
+        android:textSize="30dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="                                Pregătește coletul și"
+        android:textColor="@color/chaudron"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="520dp"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="                                   așteaptă curierul!"
+        android:textColor="@color/chaudron"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="550dp"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3. Produsul este livrat?"
+        android:textColor="@color/chaudron"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="600dp"
+        android:textSize="30dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Primeste valoarea produsului in cont."
+        android:textColor="@color/chaudron"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="640dp"
+        android:textSize="20dp"/>
+
 
     <include
         layout="@layout/button_navigation_drawer">
