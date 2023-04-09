@@ -115,6 +115,7 @@ public class PrincipalPage extends AppCompatActivity {
     }
 
     public void ClickSignOut(View view){    logout(PrincipalPage.this);}
+    public void ClickAdd(View view){ redirectActivity(PrincipalPage.this,AdaugaAnunt.class);}
     public void ClickHome(View view){    closeDrawer(drawerLayout);}
     public void ClickDespreNoi(View view){
         redirectActivity(PrincipalPage.this,DespreNoi.class);

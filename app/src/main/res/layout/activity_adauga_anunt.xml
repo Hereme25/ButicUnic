@@ -1,0 +1,215 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/download"
+    tools:context=".AdaugaAnunt">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="42dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_baseline_smartphone_24"
+        app:tint="@color/chaudron" />
+
+    <TextView
+        android:id="@+id/instagramlink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/imageView"
+        android:layout_marginTop="18dp"
+        android:text=":butic_unic"
+        android:textColor="@color/chaudron"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/instagramlink"
+        app:srcCompat="@mipmap/icon" />
+
+
+    <TextView
+        android:id="@+id/detalii"
+        android:layout_width="300dp"
+        android:layout_height="42dp"
+        android:layout_below="@id/imageButton"
+        android:layout_marginTop="30dp"
+        android:text="DETALII ANUNȚ"
+        android:textSize="19sp"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/labelview"
+        />
+
+
+    <EditText
+        android:id="@+id/TitlulBox"
+        android:layout_width="380dp"
+        android:layout_height="42dp"
+        android:layout_below="@id/detalii"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/mytextviews"
+        android:hint=" Titlul anunțului"
+        android:textStyle="bold"
+        android:drawableLeft="@drawable/ic_baseline_title_24"
+        android:textColorHint="@color/chaudron"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/ImagineProdus"
+        android:layout_width="280dp"
+        android:layout_height="210dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/TitlulBox"
+        android:src="@drawable/capture"
+        android:scaleType="fitXY"/>
+
+   <EditText
+       android:id="@+id/DescriereBox"
+       android:layout_width="380dp"
+       android:layout_height="42dp"
+       android:layout_below="@id/ImagineProdus"
+       android:layout_marginLeft="15dp"
+       android:layout_marginTop="25dp"
+       android:background="@drawable/mytextviews"
+       android:hint=" Descrierea anunțului"
+       android:textStyle="bold"
+       android:drawableLeft="@drawable/ic_baseline_title_24"
+       android:textColorHint="@color/chaudron"
+       android:textSize="20sp"    />
+
+   <EditText
+       android:id="@+id/PretBox"
+       android:layout_width="380dp"
+       android:layout_height="42dp"
+       android:layout_below="@id/DescriereBox"
+       android:layout_marginLeft="15dp"
+       android:layout_marginTop="25dp"
+       android:background="@drawable/mytextviews"
+       android:hint=" Prețul produsului în lei"
+       android:textStyle="bold"
+       android:inputType="numberDecimal"
+       android:drawableLeft="@drawable/ic_baseline_title_24"
+       android:textColorHint="@color/chaudron"
+       android:textSize="20sp"/>
+
+   <EditText
+       android:id="@+id/CategoriaBox"
+       android:layout_width="380dp"
+       android:layout_height="42dp"
+       android:layout_below="@id/PretBox"
+       android:layout_marginLeft="15dp"
+       android:layout_marginTop="25dp"
+       android:background="@drawable/dropdownview"
+       android:hint=" Categoria produsului"
+       android:drawableRight="@drawable/ic_baseline_keyboard_arrow_down_24"
+       android:textStyle="bold"
+       android:drawableLeft="@drawable/ic_baseline_list_24"
+       android:textColorHint="@color/chaudron"
+       android:textSize="20sp" />
+
+   <TextView
+       android:id="@+id/LocalizareText"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:text="Locația vânzătorului*"
+       android:layout_below="@id/CategoriaBox"
+       android:layout_marginTop="40dp"
+       android:textStyle="bold"
+       android:textSize="17dp"
+       android:layout_marginLeft="15dp"
+       android:textColor="@color/chaudron"/>
+
+    <TextView
+        android:id="@+id/LocalizareBox"
+        android:layout_width="380dp"
+        android:layout_height="42dp"
+        android:layout_below="@id/LocalizareText"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/mytextviews"
+        android:hint=" Localizare"
+        android:textStyle="bold"
+        android:drawableLeft="@drawable/ic_baseline_pin_drop_24"
+        android:textColorHint="@color/chaudron"
+        android:textSize="20sp"
+        android:padding="7dp"/>
+
+    <TextView
+        android:id="@+id/InfoContactText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Informații de contact ale vânzătorului*"
+        android:layout_below="@id/LocalizareBox"
+        android:layout_marginTop="40dp"
+        android:textStyle="bold"
+        android:textSize="17dp"
+        android:layout_marginLeft="15dp"
+        android:textColor="@color/chaudron"/>
+
+   <TextView
+       android:id="@+id/MailBox"
+       android:layout_width="380dp"
+       android:layout_height="42dp"
+       android:layout_below="@id/InfoContactText"
+       android:layout_marginLeft="15dp"
+       android:layout_marginTop="25dp"
+       android:background="@drawable/mytextviews"
+       android:hint=" Email"
+       android:textStyle="bold"
+       android:drawableLeft="@drawable/ic_baseline_email_24"
+       android:textColorHint="@color/chaudron"
+       android:textSize="20sp"
+       android:padding="7dp" />
+
+   <TextView
+       android:id="@+id/TelefonBox"
+       android:layout_width="380dp"
+       android:layout_height="42dp"
+       android:layout_below="@id/MailBox"
+       android:layout_marginLeft="15dp"
+       android:layout_marginTop="25dp"
+       android:background="@drawable/mytextviews"
+       android:hint=" Nr. de telefon"
+       android:textStyle="bold"
+       android:drawableLeft="@drawable/ic_baseline_phone_24"
+       android:textColorHint="@color/chaudron"
+       android:textSize="20sp"
+       android:padding="7dp"   />
+
+    <Button
+        android:id="@+id/AdaugaAnuntButton"
+        android:layout_width="180dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/mybuttons"
+        android:text="Adaugă anunț"
+        android:textColor="@color/white"
+        android:layout_below="@id/TelefonBox"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+    </RelativeLayout>
+</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
