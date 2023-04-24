@@ -1,12 +1,14 @@
 package com.example.licenta2023;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -29,6 +31,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,20 +43,24 @@ public class AdaugaAnunt extends AppCompatActivity {
     ArrayList<String> categorii = new ArrayList<>(Arrays.asList("Blugi", "Geci", "Rochii","Bluze"));
     TextView localizare, email, nrtelefon;
     ImageView imagineProdus;
+    Uri imagineUri;
     Dialog dialog;
-    private FirebaseDatabase firebaseDatabase;//decalara o referinta la baza de date
+    private FirebaseDatabase firebaseDatabase;//declara o referinta la baza de date
     private FirebaseAuth mAuth;
     private DatabaseReference reference;
     private FirebaseUser user;
     String proprietarNume;
     String userId;
     Button adaugaAnunt;
+    private static final int PICK_IMAGINE_REQUEST = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adauga_anunt);
         titlu=findViewById(R.id.TitlulBox);
+        imagineProdus=findViewById(R.id.ImagineProdus);
         descriere=findViewById(R.id.DescriereBox);
         pret=findViewById(R.id.PretBox);
         categorie=findViewById(R.id.CategoriaBox);
@@ -88,6 +95,12 @@ public class AdaugaAnunt extends AppCompatActivity {
             }
         });
 
+        imagineProdus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectImage();
+            }
+        });
         adaugaAnunt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,5 +156,22 @@ public class AdaugaAnunt extends AppCompatActivity {
                 });
             }
         });
+    }
+    private void selectImage() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, PICK_IMAGINE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        AdaugaAnunt.super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == PICK_IMAGINE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null){
+            imagineUri = data.getData();
+
+            Picasso.with(this).load(imagineUri).into(imagineProdus);
+        }
     }
 }
