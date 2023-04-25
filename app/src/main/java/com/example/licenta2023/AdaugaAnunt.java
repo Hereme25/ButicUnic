@@ -2,6 +2,7 @@ package com.example.licenta2023;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
@@ -9,6 +10,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -33,6 +35,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.UUID;
@@ -43,8 +47,8 @@ public class AdaugaAnunt extends AppCompatActivity {
     ArrayList<String> categorii = new ArrayList<>(Arrays.asList("Blugi", "Geci", "Rochii","Bluze"));
     TextView localizare, email, nrtelefon;
     ImageView imagineProdus;
-    Uri imagineUri;
     Dialog dialog;
+    Uri imagineUri;
     private FirebaseDatabase firebaseDatabase;//declara o referinta la baza de date
     private FirebaseAuth mAuth;
     private DatabaseReference reference;
@@ -102,6 +106,7 @@ public class AdaugaAnunt extends AppCompatActivity {
             }
         });
         adaugaAnunt.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 String titluText=titlu.getText().toString().trim();
@@ -111,7 +116,10 @@ public class AdaugaAnunt extends AppCompatActivity {
                 String telefonText=nrtelefon.getText().toString().trim();
                 String emailText=email.getText().toString().trim();
                 String localizareText=localizare.getText().toString().trim();
-                Anunt anunt = new Anunt(titluText, proprietarNume, categorieText, emailText, valoarePret, descriereText, localizareText, telefonText);
+                DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                String dataAnunt = LocalDateTime.now().format(format);
+                String imageUriString = imagineUri.getPath();
+                Anunt anunt = new Anunt(titluText, proprietarNume, categorieText, emailText, valoarePret, descriereText, localizareText, telefonText, imageUriString, dataAnunt);
                 firebaseDatabase.getReference("Anunturi").child(UUID.randomUUID().toString()).setValue(anunt);
                 Toast.makeText(AdaugaAnunt.this, "Anunț adăugat cu succes!", Toast.LENGTH_LONG).show();
                 Intent i= new Intent(AdaugaAnunt.this, PrincipalPage.class);

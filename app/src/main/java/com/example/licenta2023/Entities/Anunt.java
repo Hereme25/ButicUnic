@@ -1,5 +1,9 @@
 package com.example.licenta2023.Entities;
 
+import android.net.Uri;
+
+import java.time.LocalDateTime;
+
 public class Anunt {
     private String titlu;
     private String proprietar;
@@ -9,11 +13,14 @@ public class Anunt {
     private String descriere;
     private String localizare;
     private String telefon;
+    private String imagineUri;
+    private String dataAnunt;
 
     public Anunt() {
     }
 
-    public Anunt(String titlu, String proprietar, String categorie, String email, Double pret, String descriere, String localizare, String telefon) {
+
+    public Anunt(String titlu, String proprietar, String categorie, String email, Double pret, String descriere, String localizare, String telefon, String imagineUri, String dataAnunt) {
         this.titlu = titlu;
         this.categorie = categorie;
         this.email = email;
@@ -22,6 +29,25 @@ public class Anunt {
         this.descriere = descriere;
         this.localizare = localizare;
         this.telefon = telefon;
+        this.imagineUri = imagineUri;
+        this.dataAnunt = dataAnunt;
+
+    }
+
+    public String getImagineUri() {
+        return imagineUri;
+    }
+
+    public void setImagineUri(String imagineUri) {
+        this.imagineUri = imagineUri;
+    }
+
+    public String getDataAnunt() {
+        return dataAnunt;
+    }
+
+    public void setDataAnunt(String dataAnunt) {
+        this.dataAnunt = dataAnunt;
     }
 
     public String getTitlu() {
