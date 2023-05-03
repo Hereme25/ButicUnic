@@ -118,7 +118,7 @@ public class AdaugaAnunt extends AppCompatActivity {
                 String localizareText=localizare.getText().toString().trim();
                 DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                 String dataAnunt = LocalDateTime.now().format(format);
-                String imageUriString = imagineUri.getPath();
+                String imageUriString = imagineUri.toString();
                 Anunt anunt = new Anunt(titluText, proprietarNume, categorieText, emailText, valoarePret, descriereText, localizareText, telefonText, imageUriString, dataAnunt);
                 firebaseDatabase.getReference("Anunturi").child(UUID.randomUUID().toString()).setValue(anunt);
                 Toast.makeText(AdaugaAnunt.this, "Anunț adăugat cu succes!", Toast.LENGTH_LONG).show();

@@ -114,10 +114,31 @@ public class PrincipalPage extends AppCompatActivity {
         drawerLayout.openDrawer(GravityCompat.START);
     }
 
-    public void ClickSignOut(View view){    logout(PrincipalPage.this);}
-    public void ClickAdd(View view){ redirectActivity(PrincipalPage.this,AdaugaAnunt.class);}
-    public void ClickHome(View view){    closeDrawer(drawerLayout);}
-    public void ClickDespreNoi(View view){
+    public void ClickSignOut(View view)
+    {
+        logout(PrincipalPage.this);
+    }
+    public void ClickAdd(View view)
+    {
+
+        redirectActivity(PrincipalPage.this,AdaugaAnunt.class);
+    }
+    public void ClickHome(View view)
+    {
+
+        closeDrawer(drawerLayout);
+    }
+    public void ClickDespreNoi(View view)
+    {
+
         redirectActivity(PrincipalPage.this,DespreNoi.class);
+    }
+    public void ClickAnunturi(View view)
+    {
+        redirectActivity(PrincipalPage.this,AnunturiActivity.class);
+    }
+    public void ClickAnunturileMele(View view)
+    {
+        redirectActivity(PrincipalPage.this,AnunturileMele.class);
     }
 }

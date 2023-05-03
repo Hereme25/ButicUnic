@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/anunt_imagine"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:background="@drawable/download">
+        </ImageView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/anunt_imagine"
+            android:background="@drawable/border_anunturi">
+
+            <TextView
+                android:id="@+id/anunt_titlu"
+                android:background="@drawable/border_anunturi"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="Titlu"
+                android:textAlignment="textStart"
+                android:textColor="@color/chaudron"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:padding="35sp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/anunt_locatie"
+                android:background="@drawable/border_anunturi"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:text="Locatie"
+                android:layout_below="@id/anunt_titlu"
+                android:textColor="@color/chaudron"
+                android:textStyle="bold"
+                android:textSize="20dp"
+               android:padding="15dp">
+            </TextView>
+            <TextView
+                android:id="@+id/liniuta"
+                android:background="@drawable/border_anunturi"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:text="->"
+                android:textColor="@color/chaudron"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_below="@id/anunt_titlu"
+                android:layout_toRightOf="@id/anunt_locatie"
+                android:padding="15dp">
+
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/anunt_data"
+                android:background="@drawable/border_anunturi"
+                android:layout_height="60dp"
+                android:text="Data"
+                android:textColor="@color/chaudron"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_below="@id/anunt_titlu"
+                android:layout_toRightOf="@id/liniuta"
+                android:padding="15dp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/anunt_pret"
+                android:background="@drawable/border_anunturi"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:text="100"
+                android:layout_below="@id/anunt_locatie"
+                android:textColor="@color/chaudron"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:padding="15dp">
+            </TextView>
+            <TextView
+                android:id="@+id/anunt_pret_lei"
+                android:background="@drawable/border_anunturi"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:text="lei"
+                android:layout_below="@id/anunt_locatie"
+                android:layout_toRightOf="@id/anunt_pret"
+                android:textColor="@color/chaudron"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:padding="15dp">
+            </TextView>
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

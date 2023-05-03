@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AnunturileMele"
+    android:background="@drawable/download">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="42dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/ic_baseline_smartphone_24"
+                app:tint="@color/chaudron" />
+
+            <TextView
+                android:id="@+id/instagramlink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/imageView"
+                android:layout_marginTop="18dp"
+                android:text=":butic_unic"
+                android:textColor="@color/chaudron"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="170dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/instagramlink"
+                app:srcCompat="@mipmap/icon" />
+
+            <TextView
+                android:id="@+id/textViewButic"
+                android:layout_width="217dp"
+                android:layout_height="120dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="100dp"
+                android:text="Butic"
+                android:textColor="@color/chaudron"
+                android:textSize="70dp" />
+
+            <TextView
+                android:id="@+id/textViewUnic"
+                android:layout_width="217dp"
+                android:layout_height="120dp"
+                android:layout_marginBottom="160dp"
+                android:layout_marginTop="-20dp"
+                android:text=" Unic"
+                android:textColor="@color/white"
+                android:textSize="70dp"
+                android:layout_below="@+id/textViewButic"
+                android:layout_marginLeft="180dp"/>
+
+            <TextView
+                android:id="@+id/anunturi"
+                android:layout_width="350dp"
+                android:layout_height="42dp"
+                android:text="Anunturile mele"
+                android:textStyle="bold"
+                android:textSize="23dp"
+                android:layout_marginTop="-150dp"
+                android:layout_below="@id/textViewUnic"
+                android:textColor="@color/chaudron"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/textviewbackround"
+                />
+
+            <ListView
+                android:id="@+id/anunturileMeleListView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="10dp"
+                android:minHeight="300dp"
+                android:layout_below="@id/anunturi">
+            </ListView>
+
+
+        </RelativeLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

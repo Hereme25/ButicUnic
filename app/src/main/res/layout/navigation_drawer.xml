@@ -161,6 +161,76 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
+        android:onClick="ClickAnunturi">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"
+            android:text="Vizualizare Anunturi"
+            android:textStyle="bold"
+            android:textColor="@color/chaudron"
+            android:padding="12dp"
+            android:layout_marginStart="16dp">
+
+        </TextView>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="20dp"
+            app:tint="@color/chaudron"
+            android:src="@drawable/ic_baseline_newspaper_24">
+
+        </ImageView>
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:onClick="ClickAnunturileMele">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"
+            android:text="Anunturile mele"
+            android:textStyle="bold"
+            android:textColor="@color/chaudron"
+            android:padding="12dp"
+            android:layout_marginStart="16dp">
+
+        </TextView>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="20dp"
+            app:tint="@color/chaudron"
+            android:src="@drawable/ic_baseline_newspaper_24">
+
+        </ImageView>
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:onClick="ClickSignOut">
 
         <TextView
