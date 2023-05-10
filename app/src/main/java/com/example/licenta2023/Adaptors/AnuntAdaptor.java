@@ -32,12 +32,12 @@ public class AnuntAdaptor extends ArrayAdapter<Anunt> {
         TextView data= (TextView) convertView.findViewById(R.id.anunt_data);
         TextView pret= (TextView) convertView.findViewById(R.id.anunt_pret);
         ImageView imagineAnunt=(ImageView) convertView.findViewById(R.id.anunt_imagine);
-        Picasso.with(getContext()).load(anunt.getImagineUri()).into(imagineAnunt);
 
         titlu.setText(anunt.getTitlu());
         locatie.setText(anunt.getLocalizare());
         data.setText(anunt.getDataAnunt());
         pret.setText(anunt.getPret().toString());
+        Picasso.with(this.getContext()).load(anunt.getImagineUri()).fit().centerCrop().into(imagineAnunt);
 
         return convertView;
     }

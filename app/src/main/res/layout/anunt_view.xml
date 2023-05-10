@@ -10,8 +10,7 @@
         <ImageView
             android:id="@+id/anunt_imagine"
             android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:background="@drawable/download">
+            android:layout_height="350dp">
         </ImageView>
 
         <RelativeLayout
@@ -30,7 +29,8 @@
                 android:textColor="@color/chaudron"
                 android:textStyle="bold"
                 android:textSize="20dp"
-                android:padding="35sp">
+                android:padding="35sp"
+                android:autoSizeTextType="uniform">
             </TextView>
 
             <TextView

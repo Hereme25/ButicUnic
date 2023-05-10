@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".VizualizareAnunt">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:src="@drawable/ic_baseline_newspaper_24">
+    </ImageView>
+    <TextView
+        android:id="@+id/TitluBazaDeDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Titlu Anunt"
+        android:textAlignment="center"
+        android:layout_marginTop="20dp"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        android:textColor="@color/chaudron"
+        android:background="@drawable/border_anunturi"
+        android:autoSizeTextType="uniform">
+    </TextView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/black">
+
+    </View>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/CategorieText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Categorie:  "
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/red"
+            android:autoSizeTextType="uniform">
+        </TextView>
+
+        <TextView
+            android:id="@+id/CategorieBazaDeDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="  Dee ceekek bfdn"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/chaudron"
+            android:layout_marginLeft="110dp"
+            android:autoSizeTextType="uniform">
+        </TextView>
+
+        <TextView
+            android:id="@+id/DescriereText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descriere:"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            android:layout_below="@+id/CategorieText"
+            android:textStyle="bold"
+            android:textColor="@color/red"
+            android:autoSizeTextType="uniform">
+        </TextView>
+
+        <TextView
+            android:id="@+id/DescriereBazaDeDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="  Dee ceekek bfdn"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            android:layout_below="@id/CategorieBazaDeDate"
+            android:textStyle="bold"
+            android:textColor="@color/chaudron"
+            android:layout_marginLeft="110dp"
+            android:autoSizeTextType="uniform">
+        </TextView>
+        <TextView
+            android:id="@+id/DataAnuntText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Data Anunt:"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            android:layout_below="@+id/DescriereText"
+            android:textStyle="bold"
+            android:textColor="@color/red"
+            android:autoSizeTextType="uniform">
+        </TextView>
+
+        <TextView
+            android:id="@+id/DataAnuntBazaDeDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="  Dee ceekek bfdn"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            android:layout_below="@id/DescriereBazaDeDate"
+            android:textStyle="bold"
+            android:textColor="@color/chaudron"
+            android:layout_marginLeft="110dp"
+            android:autoSizeTextType="uniform">
+        </TextView>
+
+        <TextView
+            android:id="@+id/PretText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pret (lei):"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            android:layout_below="@+id/DataAnuntText"
+            android:textStyle="bold"
+            android:textColor="@color/red"
+            android:autoSizeTextType="uniform">
+        </TextView>
+
+        <TextView
+            android:id="@+id/PretBazaDeDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="  Dee ceekek bfdn"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            android:layout_below="@id/DataAnuntBazaDeDate"
+            android:textStyle="bold"
+            android:textColor="@color/chaudron"
+            android:layout_marginLeft="110dp"
+            android:autoSizeTextType="uniform">
+        </TextView>
+
+        <TextView
+            android:id="@+id/LocatieText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Locatie:"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            android:layout_below="@+id/PretText"
+            android:textStyle="bold"
+            android:textColor="@color/red"
+            android:autoSizeTextType="uniform">
+        </TextView>
+
+        <TextView
+            android:id="@+id/LocatieBazaDeDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="  Dee ceekek bfdn"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            android:layout_below="@id/PretBazaDeDate"
+            android:textStyle="bold"
+            android:textColor="@color/chaudron"
+            android:layout_marginLeft="110dp"
+            android:autoSizeTextType="uniform">
+        </TextView>
+
+        <TextView
+            android:id="@+id/EmailText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email:"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            android:layout_below="@+id/LocatieText"
+            android:textStyle="bold"
+            android:textColor="@color/red"
+            android:autoSizeTextType="uniform">
+        </TextView>
+
+        <TextView
+            android:id="@+id/EmailBazaDeDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="  Dee ceekek bfdn"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            android:layout_below="@id/LocatieBazaDeDate"
+            android:textStyle="bold"
+            android:textColor="@color/chaudron"
+            android:layout_marginLeft="110dp"
+            android:autoSizeTextType="uniform">
+        </TextView>
+
+        <TextView
+            android:id="@+id/telefonText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/EmailText"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="25dp"
+            android:autoSizeTextType="uniform"
+            android:text="Telefon:"
+            android:textColor="@color/red"
+            android:textSize="20dp"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/telefonBazaDeDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="  Dee ceekek bfdn"
+            android:layout_marginTop="25dp"
+            android:textSize="20dp"
+            android:layout_below="@id/EmailBazaDeDate"
+            android:textStyle="bold"
+            android:textColor="@color/chaudron"
+            android:layout_marginLeft="110dp"
+            android:autoSizeTextType="uniform">
+        </TextView>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/black"
+            android:layout_below="@+id/telefonText">
+        </View>
+        <Button
+            android:id="@+id/StergereAnunt"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mybuttons"
+            android:layout_below="@+id/telefonText"
+            android:layout_marginTop="50dp"
+            android:layout_centerHorizontal="true"
+            android:text="Ștergere Anunț"
+            android:textColor="@color/white"
+            android:visibility="invisible"
+            android:textSize="17sp">
+
+        </Button>
+    </RelativeLayout>
+
+
+</LinearLayout>

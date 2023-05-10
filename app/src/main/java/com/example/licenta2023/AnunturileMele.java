@@ -3,9 +3,11 @@ package com.example.licenta2023;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -68,12 +70,27 @@ public class AnunturileMele extends AppCompatActivity {
                     for(DataSnapshot anunt: snapshot.getChildren()){
                         Anunt currentAnunt = anunt.getValue(Anunt.class);
                         if(currentAnunt.getProprietar().equals(userFullName));
-                            anunturileMele.add(currentAnunt);
+                        anunturileMele.add(currentAnunt);
                     }
                     if(anunturileMele.size()>0){
                         AnuntAdaptor anuntAdaptor = new AnuntAdaptor(AnunturileMele.this, anunturileMele);
                         anunturiLista.setAdapter(anuntAdaptor);
                         setListViewHeightBasedOnChildren(anunturiLista);
+                        anunturiLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                Intent intent = new Intent(AnunturileMele.this, VizualizareAnunt.class);
+                                intent.putExtra("TitluAnunt",anunturileMele.get(position).getTitlu());
+                                intent.putExtra("DescriereAnunt",anunturileMele.get(position).getDescriere());
+                                intent.putExtra("PretAnunt",anunturileMele.get(position).getPret().toString());
+                                intent.putExtra("CategorieAnunt",anunturileMele.get(position).getCategorie());
+                                intent.putExtra("LocatieAnunt",anunturileMele.get(position).getLocalizare());
+                                intent.putExtra("DataAnunt",anunturileMele.get(position).getDataAnunt());
+                                intent.putExtra("TelefonAnunt",anunturileMele.get(position).getTelefon());
+                                intent.putExtra("EmailAnunt",anunturileMele.get(position).getEmail());
+                                startActivity(intent);
+                            }
+                        });
                     }
                 }
             }
