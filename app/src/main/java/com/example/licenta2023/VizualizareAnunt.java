@@ -73,7 +73,6 @@ public class VizualizareAnunt extends AppCompatActivity {
                     startActivity(i);
                 }
             });
-
             FirebaseDatabase.getInstance().getReference("Anunturi").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshotAnunturi) {

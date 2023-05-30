@@ -15,6 +15,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Patterns;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
@@ -135,7 +136,6 @@ public class AdaugaAnunt extends AppCompatActivity {
                 finish();
             }
         });
-
         categorie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -207,4 +207,73 @@ public class AdaugaAnunt extends AppCompatActivity {
             Picasso.with(this).load(imagineUri).into(imagineProdus);
         }
     }
+    public boolean validateAnunt(String titluText, String categoriaText, String emailText, String descriereText, String telefonText, String valoarePret, String localizareText) {
+        if (titluText.isEmpty()) {
+            titluText.setError("Câmpul nume nu poate fi gol!");
+            titluText.requestFocus();
+            return false;
+        } else {
+            if (categoriaText.isEmpty()) {
+                categoriaText.setError("Câmpul prenume nu poate fi gol!");
+                categoriaText.requestFocus();
+                return false;
+            } else {
+                if (emailText.isEmpty()) {
+                    emailText.setError("Câmpul email nu poate fi gol!");
+                    emailText.requestFocus();
+                    return false;
+                } else {
+                    if (!Patterns.EMAIL_ADDRESS.matcher(emailinregistrare).matches()) {
+                        emailinregistrare.setError("Formatul adresa de email este incorect!");
+                        emailinregistrare.requestFocus();
+                        return false;
+                    } else {
+                        if (descriereText.isEmpty()) {
+                            descriereText.setError("Câmpul parolă nu poate fi gol!");
+                            descriereText.requestFocus();
+                            return false;
+                        } else {
+                            if (parola.length() < 8) {
+                                parolainregistrare.setError("Parola trebuie să conțină minim 8 caractere!");
+                                parolainregistrare.requestFocus();
+                                return false;
+                            } else {
+                                if (telefonText.isEmpty()) {
+                                    telefonText.setError("Câmpul telefon nu poate fi gol!");
+                                    telefonText.requestFocus();
+                                    return false;
+                                } else {
+                                    if (telefonText.length() < 10) {
+                                        telefonText.setError("Numărul de telefon trebuie să conțină minim 10 caractere!");
+                                        telefonText.requestFocus();
+                                        return false;
+                                    } else {
+                                        if (!Patterns.PHONE.matcher(telefonText).matches()) {
+                                            telefonText.setError("Formatul numărului de telfon este incorect!");
+                                            telefonText.requestFocus();
+                                            return false;
+                                        } else {
+                                            if (valoarePret.isEmpty()) {
+                                                valoarePret.setError("Câmpul oraș nu poate fi gol!");
+                                                valoarePret.requestFocus();
+                                                return false;
+                                            } else {
+                                                if (localizareText.isEmpty()) {
+                                                    localizareText.setError("Câmpul județ nu poate fi gol!");
+                                                    localizareText.requestFocus();
+                                                    return false;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+            }
+        }
+        return true;
 }
