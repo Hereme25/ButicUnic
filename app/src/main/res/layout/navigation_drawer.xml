@@ -163,6 +163,7 @@
         android:gravity="center_vertical"
         android:onClick="ClickAnunturi">
 
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="60dp"
@@ -186,9 +187,6 @@
 
         </ImageView>
 
-
-
-
     </LinearLayout>
 
     <LinearLayout
@@ -208,7 +206,6 @@
             android:textColor="@color/chaudron"
             android:padding="12dp"
             android:layout_marginStart="16dp">
-
         </TextView>
 
         <ImageView
@@ -217,14 +214,11 @@
             android:layout_marginEnd="10dp"
             android:layout_marginTop="20dp"
             app:tint="@color/chaudron"
-            android:src="@drawable/ic_baseline_newspaper_24">
+            android:src="@drawable/ic_baseline_shopping_cart_checkout_24">
 
         </ImageView>
-
-
-
-
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -251,7 +245,7 @@
             android:layout_height="70dp"
             android:layout_marginEnd="10dp"
             android:layout_marginTop="20dp"
-            app:tint="@color/chaudron"
+            app:tint="@color/red"
             android:src="@drawable/ic_baseline_logout_24">
 
         </ImageView>

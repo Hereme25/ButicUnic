@@ -32,14 +32,14 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="170dp"
-        android:layout_marginTop="10dp"
-        android:layout_toRightOf="@id/instagramlink"
-        app:srcCompat="@mipmap/icon" />
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="71dp"
+                android:layout_height="64dp"
+                android:layout_marginLeft="170dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/instagramlink"
+                app:srcCompat="@mipmap/icon" />
 
 
     <TextView

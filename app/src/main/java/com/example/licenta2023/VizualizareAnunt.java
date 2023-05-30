@@ -2,8 +2,13 @@ package com.example.licenta2023;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +24,7 @@ public class VizualizareAnunt extends AppCompatActivity {
 
     TextView Titlu, Descriere, Categorie, Pret, Email, Telefon, Locatie, DataAnunt;
     Button StergereAnunt;
+    static int Permission = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +58,21 @@ public class VizualizareAnunt extends AppCompatActivity {
             Telefon.setText(telefon);
             Locatie.setText(locatie);
             DataAnunt.setText(dataAnunt);
+
+            if(ContextCompat.checkSelfPermission(VizualizareAnunt.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
+
+                ActivityCompat.requestPermissions(VizualizareAnunt.this, new String[]{Manifest.permission.CALL_PHONE},Permission);
+
+            }
+
+            Telefon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(Intent.ACTION_CALL);
+                    i.setData(Uri.parse("Tel"+Telefon));
+                    startActivity(i);
+                }
+            });
 
             FirebaseDatabase.getInstance().getReference("Anunturi").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
