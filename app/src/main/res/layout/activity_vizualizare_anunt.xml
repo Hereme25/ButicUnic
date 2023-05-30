@@ -113,7 +113,7 @@
             android:layout_below="@id/DescriereBazaDeDate"
             android:textStyle="bold"
             android:textColor="@color/chaudron"
-            android:layout_marginLeft="110dp"
+            android:layout_marginLeft="120dp"
             android:autoSizeTextType="uniform">
         </TextView>
 
@@ -207,7 +207,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/EmailText"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="45dp"
             android:autoSizeTextType="uniform"
             android:text="Telefon:"
             android:textColor="@color/red"

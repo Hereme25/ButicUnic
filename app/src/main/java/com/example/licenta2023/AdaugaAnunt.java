@@ -51,7 +51,7 @@ import java.util.UUID;
 public class AdaugaAnunt extends AppCompatActivity {
 
     EditText titlu, descriere, pret, categorie;
-    ArrayList<String> categorii = new ArrayList<>(Arrays.asList("Blugi", "Geci", "Rochii","Bluze"));
+    ArrayList<String> categorii = new ArrayList<>(Arrays.asList("Blugi", "Geci", "Rochii", "Bluze"));
     TextView localizare, email, nrtelefon;
     ImageView imagineProdus;
     Dialog dialog;
@@ -72,34 +72,34 @@ public class AdaugaAnunt extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adauga_anunt);
-        titlu=findViewById(R.id.TitlulBox);
-        imagineProdus=findViewById(R.id.ImagineProdus);
-        descriere=findViewById(R.id.DescriereBox);
-        pret=findViewById(R.id.PretBox);
-        categorie=findViewById(R.id.CategoriaBox);
-        localizare=findViewById(R.id.LocalizareBox);
-        email=findViewById(R.id.MailBox);
-        nrtelefon=findViewById(R.id.TelefonBox);
-        adaugaAnunt=findViewById(R.id.AdaugaAnuntButton);
+        titlu = findViewById(R.id.TitlulBox);
+        imagineProdus = findViewById(R.id.ImagineProdus);
+        descriere = findViewById(R.id.DescriereBox);
+        pret = findViewById(R.id.PretBox);
+        categorie = findViewById(R.id.CategoriaBox);
+        localizare = findViewById(R.id.LocalizareBox);
+        email = findViewById(R.id.MailBox);
+        nrtelefon = findViewById(R.id.TelefonBox);
+        adaugaAnunt = findViewById(R.id.AdaugaAnuntButton);
 
-        mAuth=FirebaseAuth.getInstance();
-        firebaseDatabase=FirebaseDatabase.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference("imaginiAnunturi");
-        user=mAuth.getCurrentUser();
-        reference=firebaseDatabase.getReference("Users");
-        userId=user.getUid();
+        user = mAuth.getCurrentUser();
+        reference = firebaseDatabase.getReference("Users");
+        userId = user.getUid();
         reference.child(userId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User profil=snapshot.getValue(User.class);
-                if(profil != null){
+                User profil = snapshot.getValue(User.class);
+                if (profil != null) {
                     String localizareText = profil.getOras() + " / " + profil.getJudet();
                     String emailText = profil.getEmail();
                     String nrTelefonText = profil.getTelefon();
                     localizare.setText(localizareText);
                     email.setText(emailText);
                     nrtelefon.setText(nrTelefonText);
-                    proprietarNume=profil.getNume()+" "+profil.getPrenume();
+                    proprietarNume = profil.getNume() + " " + profil.getPrenume();
                 }
             }
 
@@ -119,21 +119,23 @@ public class AdaugaAnunt extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                String titluText=titlu.getText().toString().trim();
-                String categorieText=categorie.getText().toString().trim();
-                String descriereText=descriere.getText().toString().trim();
-                Double valoarePret=Double.parseDouble(pret.getText().toString().trim());
-                String telefonText=nrtelefon.getText().toString().trim();
-                String emailText=email.getText().toString().trim();
-                String localizareText=localizare.getText().toString().trim();
+                String titluText = titlu.getText().toString().trim();
+                String categorieText = categorie.getText().toString().trim();
+                String descriereText = descriere.getText().toString().trim();
+                String telefonText = nrtelefon.getText().toString().trim();
+                String emailText = email.getText().toString().trim();
+                String localizareText = localizare.getText().toString().trim();
                 DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                 String dataAnunt = LocalDateTime.now().format(format);
-                Anunt anunt = new Anunt(titluText, proprietarNume, categorieText, emailText, valoarePret, descriereText, localizareText, telefonText, imagineUriString, dataAnunt);
-                firebaseDatabase.getReference("Anunturi").child(UUID.randomUUID().toString()).setValue(anunt);
-                Toast.makeText(AdaugaAnunt.this, "Anunț adăugat cu succes!", Toast.LENGTH_LONG).show();
-                Intent i= new Intent(AdaugaAnunt.this, PrincipalPage.class);
-                startActivity(i);
-                finish();
+                if (validateAnunt(titluText, categorieText, descriereText, pret.getText().toString())) {
+                    Double valoarePret = Double.parseDouble(pret.getText().toString().trim());
+                    Anunt anunt = new Anunt(titluText, proprietarNume, categorieText, emailText, valoarePret, descriereText, localizareText, telefonText, imagineUriString, dataAnunt);
+                    firebaseDatabase.getReference("Anunturi").child(UUID.randomUUID().toString()).setValue(anunt);
+                    Toast.makeText(AdaugaAnunt.this, "Anunț adăugat cu succes!", Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(AdaugaAnunt.this, PrincipalPage.class);
+                    startActivity(i);
+                    finish();
+                }
             }
         });
         categorie.setOnClickListener(new View.OnClickListener() {
@@ -145,7 +147,7 @@ public class AdaugaAnunt extends AppCompatActivity {
                 dialog.show();
                 EditText editText = dialog.findViewById(R.id.category_edit_text);
                 ListView listView = dialog.findViewById(R.id.searchCategoryListView);
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(AdaugaAnunt.this, android.R.layout.simple_list_item_1,categorii);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(AdaugaAnunt.this, android.R.layout.simple_list_item_1, categorii);
                 listView.setAdapter(adapter);
                 editText.addTextChangedListener(new TextWatcher() {
                     @Override
@@ -173,21 +175,23 @@ public class AdaugaAnunt extends AppCompatActivity {
             }
         });
     }
+
     private void selectImage() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, PICK_IMAGINE_REQUEST);
     }
-    private String getFileExtension(Uri uri){
+
+    private String getFileExtension(Uri uri) {
         ContentResolver cr = getContentResolver();
         MimeTypeMap mim = MimeTypeMap.getSingleton();
         return mim.getExtensionFromMimeType(cr.getType(uri));
     }
 
-    private void uploadFile(){
-        if(imagineUri != null ){
-            StorageReference fileReference = storageReference.child(System.currentTimeMillis() + "." +getFileExtension(imagineUri));
+    private void uploadFile() {
+        if (imagineUri != null) {
+            StorageReference fileReference = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(imagineUri));
             fileReference.putFile(imagineUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -198,82 +202,40 @@ public class AdaugaAnunt extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == PICK_IMAGINE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null){
+        if (requestCode == PICK_IMAGINE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             imagineUri = data.getData();
             uploadFile();
             Picasso.with(this).load(imagineUri).into(imagineProdus);
         }
     }
-    public boolean validateAnunt(String titluText, String categoriaText, String emailText, String descriereText, String telefonText, String valoarePret, String localizareText) {
+
+    public boolean validateAnunt(String titluText, String categoriaText, String descriereText, String valoarePret) {
         if (titluText.isEmpty()) {
-            titluText.setError("Câmpul nume nu poate fi gol!");
-            titluText.requestFocus();
+            titlu.setError("Câmpul titlu nu poate fi gol!");
+            titlu.requestFocus();
             return false;
         } else {
-            if (categoriaText.isEmpty()) {
-                categoriaText.setError("Câmpul prenume nu poate fi gol!");
-                categoriaText.requestFocus();
+            if (descriereText.isEmpty()) {
+                descriere.setError("Câmpul descriere nu poate fi gol!");
+                descriere.requestFocus();
                 return false;
             } else {
-                if (emailText.isEmpty()) {
-                    emailText.setError("Câmpul email nu poate fi gol!");
-                    emailText.requestFocus();
+                if (valoarePret.isEmpty()) {
+                    pret.setError("Câmpul preț nu poate fi gol!");
+                    pret.requestFocus();
                     return false;
                 } else {
-                    if (!Patterns.EMAIL_ADDRESS.matcher(emailinregistrare).matches()) {
-                        emailinregistrare.setError("Formatul adresa de email este incorect!");
-                        emailinregistrare.requestFocus();
+                    if (categoriaText.isEmpty()) {
+                        categorie.setError("Câmpul categorie nu poate fi gol!");
+                        categorie.requestFocus();
                         return false;
-                    } else {
-                        if (descriereText.isEmpty()) {
-                            descriereText.setError("Câmpul parolă nu poate fi gol!");
-                            descriereText.requestFocus();
-                            return false;
-                        } else {
-                            if (parola.length() < 8) {
-                                parolainregistrare.setError("Parola trebuie să conțină minim 8 caractere!");
-                                parolainregistrare.requestFocus();
-                                return false;
-                            } else {
-                                if (telefonText.isEmpty()) {
-                                    telefonText.setError("Câmpul telefon nu poate fi gol!");
-                                    telefonText.requestFocus();
-                                    return false;
-                                } else {
-                                    if (telefonText.length() < 10) {
-                                        telefonText.setError("Numărul de telefon trebuie să conțină minim 10 caractere!");
-                                        telefonText.requestFocus();
-                                        return false;
-                                    } else {
-                                        if (!Patterns.PHONE.matcher(telefonText).matches()) {
-                                            telefonText.setError("Formatul numărului de telfon este incorect!");
-                                            telefonText.requestFocus();
-                                            return false;
-                                        } else {
-                                            if (valoarePret.isEmpty()) {
-                                                valoarePret.setError("Câmpul oraș nu poate fi gol!");
-                                                valoarePret.requestFocus();
-                                                return false;
-                                            } else {
-                                                if (localizareText.isEmpty()) {
-                                                    localizareText.setError("Câmpul județ nu poate fi gol!");
-                                                    localizareText.requestFocus();
-                                                    return false;
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
                     }
-
                 }
-
             }
+            return true;
         }
-        return true;
+    }
 }
