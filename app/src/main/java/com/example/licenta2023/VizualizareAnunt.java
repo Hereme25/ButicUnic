@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.licenta2023.Entities.Anunt;
@@ -47,6 +48,7 @@ public class VizualizareAnunt extends AppCompatActivity {
         DataAnunt=findViewById(R.id.DataAnuntBazaDeDate);
         StergereAnunt=findViewById(R.id.StergereAnunt);
 
+
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         emailUser = user.getEmail();
@@ -61,6 +63,7 @@ public class VizualizareAnunt extends AppCompatActivity {
             String telefon = intent.getStringExtra("TelefonAnunt");
             String locatie = intent.getStringExtra("LocatieAnunt");
             String dataAnunt = intent.getStringExtra("DataAnunt");
+            String pozaUrl = intent.getStringExtra("LinkPoza");
             Titlu.setText(titlu);
             Descriere.setText(descriere);
             Categorie.setText(categorie);
@@ -71,24 +74,22 @@ public class VizualizareAnunt extends AppCompatActivity {
             DataAnunt.setText(dataAnunt);
 
 
-            Telefon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(ContextCompat.checkSelfPermission(VizualizareAnunt.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
 
-                        ActivityCompat.requestPermissions(VizualizareAnunt.this, new String[]{Manifest.permission.CALL_PHONE},Permission);
+            Telefon.setOnClickListener(v -> {
+                if(ContextCompat.checkSelfPermission(VizualizareAnunt.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
 
-                    }
-                    Intent i = new Intent(Intent.ACTION_DIAL,Uri.fromParts("tel",telefon,null));
-                    startActivity(i);
+                    ActivityCompat.requestPermissions(VizualizareAnunt.this, new String[]{Manifest.permission.CALL_PHONE},Permission);
+
                 }
+                Intent i = new Intent(Intent.ACTION_DIAL,Uri.fromParts("tel",telefon,null));
+                startActivity(i);
             });
             FirebaseDatabase.getInstance().getReference("Anunturi").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshotAnunturi) {
                     for(DataSnapshot anuntSnapshot: snapshotAnunturi.getChildren()){
                         Anunt anunt = anuntSnapshot.getValue(Anunt.class);
-                        if(email.equals(emailUser)){
+                        if (anunt.getUid().equals(user.getUid())) {
                             StergereAnunt.setVisibility(View.VISIBLE);
                         }
                     }
@@ -99,36 +100,36 @@ public class VizualizareAnunt extends AppCompatActivity {
 
                 }
             });
-            StergereAnunt.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(VizualizareAnunt.this);
-                    builder.setTitle("Ștergere anunț!");
-                    builder.setMessage("Ești sigur că vrei să ștergi anunțul?");
-                    builder.setPositiveButton("Da", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            FirebaseDatabase.getInstance().getReference("Anunturi").addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    for(DataSnapshot anuntSnapshot:snapshot.getChildren()){
-                                        Anunt anuntCurent = anuntSnapshot.getValue(Anunt.class);
-                                        if(anuntCurent.getTitlu().equals(titlu)){
-                                            anuntSnapshot.getRef().removeValue();
-                                            Intent i = new Intent(VizualizareAnunt.this, AnunturileMele.class);
-                                            startActivity(i);
-                                        }
+            StergereAnunt.setOnClickListener(v -> {
+                AlertDialog.Builder builder = new AlertDialog.Builder(VizualizareAnunt.this);
+                builder.setTitle("Ștergere anunț!");
+                builder.setMessage("Ești sigur că vrei să ștergi anunțul?");
+                builder.setPositiveButton("Da", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        FirebaseDatabase.getInstance().getReference("Anunturi").addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                for(DataSnapshot anuntSnapshot:snapshot.getChildren()){
+                                    Anunt anuntCurent = anuntSnapshot.getValue(Anunt.class);
+                                    if(anuntCurent.getTitlu().equals(titlu)){
+                                        anuntSnapshot.getRef().removeValue();
+                                        Intent i = new Intent(VizualizareAnunt.this, AnunturileMele.class);
+                                        startActivity(i);
                                     }
                                 }
+                            }
 
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
 
-                                }
-                            });
-                        }
-                    });
-                }
+                            }
+                        });
+                    }
+                });
+                builder.setNegativeButton("Nu", null);
+                AlertDialog dialog = builder.create();
+                dialog.show();
             });
         }
     }

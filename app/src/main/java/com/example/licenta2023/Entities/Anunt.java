@@ -15,12 +15,13 @@ public class Anunt {
     private String telefon;
     private String imagineUri;
     private String dataAnunt;
+    private String uid;
 
     public Anunt() {
     }
 
 
-    public Anunt(String titlu, String proprietar, String categorie, String email, Double pret, String descriere, String localizare, String telefon, String imagineUri, String dataAnunt) {
+    public Anunt(String titlu, String proprietar, String categorie, String email, Double pret, String descriere, String localizare, String telefon, String imagineUri, String dataAnunt, String uid) {
         this.titlu = titlu;
         this.categorie = categorie;
         this.email = email;
@@ -31,12 +32,14 @@ public class Anunt {
         this.telefon = telefon;
         this.imagineUri = imagineUri;
         this.dataAnunt = dataAnunt;
-
+        this.uid=uid;
     }
 
     public String getImagineUri() {
         return imagineUri;
     }
+
+    public String getUid(){return uid;}
 
     public void setImagineUri(String imagineUri) {
         this.imagineUri = imagineUri;

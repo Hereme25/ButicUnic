@@ -32,7 +32,7 @@ public class PrincipalPage extends AppCompatActivity {
     private DatabaseReference reference;
     private FirebaseUser user;
     TextView userName, userEmail;
-    String userId;
+    public static String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,7 @@ public class PrincipalPage extends AppCompatActivity {
         user=mAuth.getCurrentUser();
         reference=firebaseDatabase.getReference("Users");
         userId=user.getUid();
+
         reference.child(userId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

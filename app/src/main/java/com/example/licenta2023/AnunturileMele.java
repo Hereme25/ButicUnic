@@ -32,6 +32,7 @@ public class AnunturileMele extends AppCompatActivity {
     private DatabaseReference userReference;
     ListView anunturiLista;
     ArrayList<Anunt> anunturileMele = new ArrayList<>();
+    private static String linkPoza;
     private FirebaseAuth mAuth;
     private FirebaseUser user;
     String userFullName;
@@ -69,27 +70,28 @@ public class AnunturileMele extends AppCompatActivity {
                 if(snapshot.exists()){
                     for(DataSnapshot anunt: snapshot.getChildren()){
                         Anunt currentAnunt = anunt.getValue(Anunt.class);
-                        if(currentAnunt.getProprietar().equals(userFullName));
-                        anunturileMele.add(currentAnunt);
+                        if(currentAnunt.getUid().equals(userId))
+                        {
+                            anunturileMele.add(currentAnunt);
+                        }
+
+                        linkPoza=currentAnunt.getImagineUri();
                     }
                     if(anunturileMele.size()>0){
                         AnuntAdaptor anuntAdaptor = new AnuntAdaptor(AnunturileMele.this, anunturileMele);
                         anunturiLista.setAdapter(anuntAdaptor);
                         setListViewHeightBasedOnChildren(anunturiLista);
-                        anunturiLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                Intent intent = new Intent(AnunturileMele.this, VizualizareAnunt.class);
-                                intent.putExtra("TitluAnunt",anunturileMele.get(position).getTitlu());
-                                intent.putExtra("DescriereAnunt",anunturileMele.get(position).getDescriere());
-                                intent.putExtra("PretAnunt",anunturileMele.get(position).getPret().toString());
-                                intent.putExtra("CategorieAnunt",anunturileMele.get(position).getCategorie());
-                                intent.putExtra("LocatieAnunt",anunturileMele.get(position).getLocalizare());
-                                intent.putExtra("DataAnunt",anunturileMele.get(position).getDataAnunt());
-                                intent.putExtra("TelefonAnunt",anunturileMele.get(position).getTelefon());
-                                intent.putExtra("EmailAnunt",anunturileMele.get(position).getEmail());
-                                startActivity(intent);
-                            }
+                        anunturiLista.setOnItemClickListener((parent, view, position, id) -> {
+                            Intent intent = new Intent(AnunturileMele.this, VizualizareAnunt.class);
+                            intent.putExtra("TitluAnunt",anunturileMele.get(position).getTitlu());
+                            intent.putExtra("DescriereAnunt",anunturileMele.get(position).getDescriere());
+                            intent.putExtra("PretAnunt",anunturileMele.get(position).getPret().toString());
+                            intent.putExtra("CategorieAnunt",anunturileMele.get(position).getCategorie());
+                            intent.putExtra("LocatieAnunt",anunturileMele.get(position).getLocalizare());
+                            intent.putExtra("DataAnunt",anunturileMele.get(position).getDataAnunt());
+                            intent.putExtra("TelefonAnunt",anunturileMele.get(position).getTelefon());
+                            intent.putExtra("EmailAnunt",anunturileMele.get(position).getEmail());
+                            startActivity(intent);
                         });
                     }
                 }

@@ -11,8 +11,10 @@
         android:layout_height="40dp"
         android:scaleType="centerCrop"
         android:onClick="ClickMenu"
+        android:background="@mipmap/meniu"
         android:outlineSpotShadowColor="@color/black"
-        android:layout_gravity="top">
+        android:layout_gravity="top"
+        >
 
     </ImageView>
 </LinearLayout>

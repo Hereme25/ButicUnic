@@ -27,6 +27,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.licenta2023.Entities.Anunt;
 import com.example.licenta2023.Entities.User;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -127,9 +128,10 @@ public class AdaugaAnunt extends AppCompatActivity {
                 String localizareText = localizare.getText().toString().trim();
                 DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                 String dataAnunt = LocalDateTime.now().format(format);
+
                 if (validateAnunt(titluText, categorieText, descriereText, pret.getText().toString())) {
                     Double valoarePret = Double.parseDouble(pret.getText().toString().trim());
-                    Anunt anunt = new Anunt(titluText, proprietarNume, categorieText, emailText, valoarePret, descriereText, localizareText, telefonText, imagineUriString, dataAnunt);
+                    Anunt anunt = new Anunt(titluText, proprietarNume, categorieText, emailText, valoarePret, descriereText, localizareText, telefonText, imagineUriString, dataAnunt, userId);
                     firebaseDatabase.getReference("Anunturi").child(UUID.randomUUID().toString()).setValue(anunt);
                     Toast.makeText(AdaugaAnunt.this, "Anunț adăugat cu succes!", Toast.LENGTH_LONG).show();
                     Intent i = new Intent(AdaugaAnunt.this, PrincipalPage.class);
@@ -138,41 +140,35 @@ public class AdaugaAnunt extends AppCompatActivity {
                 }
             }
         });
-        categorie.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog = new Dialog(AdaugaAnunt.this);
-                dialog.setContentView(R.layout.dialog_search_spiner_category);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
-                EditText editText = dialog.findViewById(R.id.category_edit_text);
-                ListView listView = dialog.findViewById(R.id.searchCategoryListView);
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(AdaugaAnunt.this, android.R.layout.simple_list_item_1, categorii);
-                listView.setAdapter(adapter);
-                editText.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        categorie.setOnClickListener(v -> {
+            dialog = new Dialog(AdaugaAnunt.this);
+            dialog.setContentView(R.layout.dialog_search_spiner_category);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.show();
+            EditText editText = dialog.findViewById(R.id.category_edit_text);
+            ListView listView = dialog.findViewById(R.id.searchCategoryListView);
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(AdaugaAnunt.this, android.R.layout.simple_list_item_1, categorii);
+            listView.setAdapter(adapter);
+            editText.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                    }
+                }
 
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        adapter.getFilter().filter(s);
-                    }
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    adapter.getFilter().filter(s);
+                }
 
-                    @Override
-                    public void afterTextChanged(Editable s) {
+                @Override
+                public void afterTextChanged(Editable s) {
 
-                    }
-                });
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        categorie.setText(adapter.getItem(position));
-                        dialog.dismiss();
-                    }
-                });
-            }
+                }
+            });
+            listView.setOnItemClickListener((parent, view, position, id) -> {
+                categorie.setText(adapter.getItem(position));
+                dialog.dismiss();
+            });
         });
     }
 
@@ -192,14 +188,12 @@ public class AdaugaAnunt extends AppCompatActivity {
     private void uploadFile() {
         if (imagineUri != null) {
             StorageReference fileReference = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(imagineUri));
-            fileReference.putFile(imagineUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    imagineUriString = taskSnapshot.getUploadSessionUri().toString();
-                }
-            });
+            fileReference.putFile(imagineUri).addOnSuccessListener(taskSnapshot -> taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri -> {
+                imagineUriString = uri.toString();
+            }));
         }
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -208,7 +202,7 @@ public class AdaugaAnunt extends AppCompatActivity {
         if (requestCode == PICK_IMAGINE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             imagineUri = data.getData();
             uploadFile();
-            Picasso.with(this).load(imagineUri).into(imagineProdus);
+            Glide.with(this).load(imagineUri).into(imagineProdus);
         }
     }
 

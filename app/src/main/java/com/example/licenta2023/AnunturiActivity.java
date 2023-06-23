@@ -48,20 +48,18 @@ public class AnunturiActivity extends AppCompatActivity {
                         AnuntAdaptor anuntAdaptor = new AnuntAdaptor(AnunturiActivity.this, anunturi);
                         anunturiLista.setAdapter(anuntAdaptor);
                         setListViewHeightBasedOnChildren(anunturiLista);
-                        anunturiLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                Intent intent = new Intent(AnunturiActivity.this, VizualizareAnunt.class);
-                                intent.putExtra("TitluAnunt",anunturi.get(position).getTitlu());
-                                intent.putExtra("DescriereAnunt",anunturi.get(position).getDescriere());
-                                intent.putExtra("PretAnunt",anunturi.get(position).getPret().toString());
-                                intent.putExtra("CategorieAnunt",anunturi.get(position).getCategorie());
-                                intent.putExtra("LocatieAnunt",anunturi.get(position).getLocalizare());
-                                intent.putExtra("DataAnunt",anunturi.get(position).getDataAnunt());
-                                intent.putExtra("TelefonAnunt",anunturi.get(position).getTelefon());
-                                intent.putExtra("EmailAnunt",anunturi.get(position).getEmail());
-                                startActivity(intent);
-                            }
+                        anunturiLista.setOnItemClickListener((parent, view, position, id) -> {
+                            Intent intent = new Intent(AnunturiActivity.this, VizualizareAnunt.class);
+                            intent.putExtra("TitluAnunt",anunturi.get(position).getTitlu());
+                            intent.putExtra("DescriereAnunt",anunturi.get(position).getDescriere());
+                            intent.putExtra("PretAnunt",anunturi.get(position).getPret().toString());
+                            intent.putExtra("CategorieAnunt",anunturi.get(position).getCategorie());
+                            intent.putExtra("LocatieAnunt",anunturi.get(position).getLocalizare());
+                            intent.putExtra("DataAnunt",anunturi.get(position).getDataAnunt());
+                            intent.putExtra("TelefonAnunt",anunturi.get(position).getTelefon());
+                            intent.putExtra("EmailAnunt",anunturi.get(position).getEmail());
+                            intent.putExtra("LinkPoza", anunturi.get(position).getImagineUri());
+                            startActivity(intent);
                         });
                     }
                 }
