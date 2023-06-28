@@ -23,12 +23,13 @@ public class AnuntAdaptor extends ArrayAdapter<Anunt> {
 
     public AnuntAdaptor(Context context, ArrayList<Anunt> anunturi){
         super(context, 0, anunturi);
-    }
+    } //clasa ajutataoare pentru maparea unor date din listview
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         Anunt anunt=getItem(position);
         if(convertView==null){
             convertView= LayoutInflater.from(getContext()).inflate(R.layout.anunt_view,parent,false);
+            //informatiile se adapteaza la interfata
         }
         TextView titlu= (TextView) convertView.findViewById(R.id.anunt_titlu);
         TextView locatie= (TextView) convertView.findViewById(R.id.anunt_locatie);
@@ -49,6 +50,4 @@ public class AnuntAdaptor extends ArrayAdapter<Anunt> {
 
         return convertView;
     }
-
-
 }

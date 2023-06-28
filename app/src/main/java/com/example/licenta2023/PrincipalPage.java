@@ -74,17 +74,17 @@ public class PrincipalPage extends AppCompatActivity {
     public void logout(Activity activity)
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setTitle("Sign out");
-        builder.setMessage("Are you sure you want to logout ?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setTitle("Delogare");
+        builder.setMessage("Ești sigur ca vrei să te deloghezi?");
+        builder.setPositiveButton("Da", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 mAuth.signOut();
-                redirectActivity(PrincipalPage.this,LoginActivity.class);//redirectioneaza in LoginActivity
+                redirectActivity(PrincipalPage.this,MainActivity.class);//redirectioneaza in MainActivity
             }
         });
 
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Nu", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();

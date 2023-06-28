@@ -72,6 +72,9 @@ public class VizualizareAnunt extends AppCompatActivity {
             Telefon.setText(telefon);
             Locatie.setText(locatie);
             DataAnunt.setText(dataAnunt);
+            if(email.equals(emailUser)){
+                StergereAnunt.setVisibility(View.VISIBLE);
+            }
 
 
 
@@ -84,22 +87,7 @@ public class VizualizareAnunt extends AppCompatActivity {
                 Intent i = new Intent(Intent.ACTION_DIAL,Uri.fromParts("tel",telefon,null));
                 startActivity(i);
             });
-            FirebaseDatabase.getInstance().getReference("Anunturi").addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshotAnunturi) {
-                    for(DataSnapshot anuntSnapshot: snapshotAnunturi.getChildren()){
-                        Anunt anunt = anuntSnapshot.getValue(Anunt.class);
-                        if (anunt.getUid().equals(user.getUid())) {
-                            StergereAnunt.setVisibility(View.VISIBLE);
-                        }
-                    }
-                }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
             StergereAnunt.setOnClickListener(v -> {
                 AlertDialog.Builder builder = new AlertDialog.Builder(VizualizareAnunt.this);
                 builder.setTitle("Ștergere anunț!");

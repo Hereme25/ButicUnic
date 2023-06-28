@@ -91,6 +91,7 @@
             android:layout_marginTop="40dp"
             android:layout_marginRight="10dp"
             android:minHeight="300dp"
+            android:dividerHeight="20sp"
             android:layout_below="@id/anunturi">
         </ListView>
 
