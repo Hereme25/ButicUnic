@@ -38,8 +38,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     FirebaseAuth mAuth;
     FirebaseDatabase firebaseDatabase;
-    ArrayList<String> orase = new ArrayList<>(Arrays.asList("Pitesti", "Bucuresti", "Iasi"));
-    ArrayList<String> judete = new ArrayList<>(Arrays.asList("Arges","Tulcea","Olt"));
+    ArrayList<String> orase = new ArrayList<>(Arrays.asList("Pitesti", "Bucuresti", "Iasi","Timisoara","Sulina"));
+    ArrayList<String> judete = new ArrayList<>(Arrays.asList("Arges","Tulcea","Olt","Ilfov","Timis"));
     Dialog dialog;
 
     @Override

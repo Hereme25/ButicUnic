@@ -2,7 +2,12 @@ package com.example.licenta2023;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.licenta2023.Adaptors.AnuntAdaptor;
@@ -36,6 +42,8 @@ public class AnunturileMele extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseUser user;
     String userFullName;
+    private DrawerLayout drawerLayout;
+    TextView userName, userEmail;
     String userId;
     String fullName;
 
@@ -46,6 +54,9 @@ public class AnunturileMele extends AppCompatActivity {
         anunturiLista = findViewById(R.id.anunturileMeleListView);
         firebaseDatabase = FirebaseDatabase.getInstance();
         mAuth=FirebaseAuth.getInstance();
+        drawerLayout=findViewById(R.id.drawer_layout);
+        userName=findViewById(R.id.userFullName);
+        userEmail=findViewById(R.id.userEmail);
         anunturiReference = firebaseDatabase.getReference("Anunturi");
         user=mAuth.getCurrentUser();
         userReference=firebaseDatabase.getReference("Users");
@@ -56,6 +67,9 @@ public class AnunturileMele extends AppCompatActivity {
                 User profil=snapshot.getValue(User.class);
                 if(profil != null){
                     fullName = profil.getNume() + " " + profil.getPrenume();
+                    String email = profil.getEmail();
+                    userName.setText(fullName);
+                    userEmail.setText(email);
                 }
             }
 
@@ -127,5 +141,84 @@ public class AnunturileMele extends AppCompatActivity {
                 + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
         listView.setLayoutParams(params);
         listView.requestLayout();
+    }
+    public void closeDrawer(DrawerLayout drawerLayout)
+    {
+        drawerLayout.closeDrawer(GravityCompat.START);
+    }
+
+    public void logout(Activity activity)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle("Delogare");
+        builder.setMessage("Ești sigur ca vrei să te deloghezi?");
+        builder.setPositiveButton("Da", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mAuth.signOut();
+                redirectActivity(AnunturileMele.this,MainActivity.class);//redirectioneaza in MainActivity
+            }
+        });
+
+        builder.setNegativeButton("Nu", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.show();
+    }
+
+    public static void redirectActivity(Activity activity, Class aClass) {
+        Intent intent = new Intent(activity,aClass);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        activity.startActivity(intent);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        closeDrawer(drawerLayout);
+    }
+    public void ClickMenu(View view)
+    {
+        openDrawer(drawerLayout);
+    }
+
+    public void openDrawer(DrawerLayout drawerLayout)
+    {
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
+
+    public void ClickSignOut(View view)
+    {
+        logout(AnunturileMele.this);
+    }
+    public void ClickAdd(View view)
+    {
+
+        redirectActivity(AnunturileMele.this,AdaugaAnunt.class);
+    }
+    public void ClickHome(View view)
+    {
+        redirectActivity(AnunturileMele.this,PrincipalPage.class);
+    }
+    public void ClickDespreNoi(View view)
+    {
+
+        redirectActivity(AnunturileMele.this,DespreNoi.class);
+    }
+    public void ClickAnunturi(View view)
+    {
+        redirectActivity(AnunturileMele.this,AnunturiActivity.class);
+    }
+    public void ClickAnunturileMele(View view)
+    {
+        closeDrawer(drawerLayout);
+    }
+    public void ClickLogo(View view)
+    {
+        closeDrawer(drawerLayout);
     }
 }

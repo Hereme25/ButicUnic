@@ -52,7 +52,7 @@ import java.util.UUID;
 public class AdaugaAnunt extends AppCompatActivity {
 
     EditText titlu, descriere, pret, categorie;
-    ArrayList<String> categorii = new ArrayList<>(Arrays.asList("Blugi", "Geci", "Rochii", "Bluze"));
+    ArrayList<String> categorii = new ArrayList<>(Arrays.asList("Blugi", "Geci", "Rochii", "Bluze", "Tricouri", "Genti","Curele","Pantofi","Sandale", "Esarfe"));
     TextView localizare, email, nrtelefon;
     ImageView imagineProdus;
     Dialog dialog;

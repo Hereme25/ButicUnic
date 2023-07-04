@@ -142,4 +142,8 @@ public class PrincipalPage extends AppCompatActivity {
     {
         redirectActivity(PrincipalPage.this,AnunturileMele.class);
     }
+    public void ClickLogo(View view)
+    {
+        closeDrawer(drawerLayout);
+    }
 }

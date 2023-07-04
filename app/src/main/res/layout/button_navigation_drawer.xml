@@ -6,15 +6,14 @@
     android:padding="12dp"
     android:gravity="center_vertical">
 
-    <ImageView
+    <ImageButton
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:scaleType="centerCrop"
         android:onClick="ClickMenu"
         android:background="@mipmap/meniu"
         android:outlineSpotShadowColor="@color/black"
-        android:layout_gravity="top"
-        >
+        android:layout_gravity="top">
 
-    </ImageView>
+    </ImageButton>
 </LinearLayout>
